@@ -20,7 +20,7 @@ import { globalStyles } from '../globalStyles.js';
 
 //"navigation" declared twice here. One for switching pages (navigation.navigate())
 //and the other for setParams
-function SurveyPage ({route, navigation, navigation:{ setParams }}) {
+function RespondentPage ({route, navigation, navigation:{ setParams }}) {
   //Destructuring assignment. Means "route.params.stringData"
   const { stringData } = route.params; 
   
@@ -49,7 +49,7 @@ function SurveyPage ({route, navigation, navigation:{ setParams }}) {
             <Button title="Go back" style={globalStyles.Button} onPress={()=>{navigation.goBack();}}/>
           </View>
           <View>
-            <Text>This is the Survey Page</Text>
+            <Text>This is the Respondent Page</Text>
             <Button title="Click to go back" onPress={()=>{navigation.goBack();}}/>
           </View>
           <View className="passedData">
@@ -62,5 +62,5 @@ function SurveyPage ({route, navigation, navigation:{ setParams }}) {
   );
 };
 
-export default SurveyPage;
+export default RespondentPage;
 

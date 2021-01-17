@@ -8,13 +8,15 @@
 
 import React from 'react';
 import {
+  Button,
   SafeAreaView,
   ScrollView,
-  View,
   Text,
   StatusBar,
+  View,
 } from 'react-native';
 import { styles } from './MainPageStyles.js';
+import { globalStyles } from '../globalStyles.js';
 
 import {
   Header,
@@ -23,7 +25,8 @@ import {
   ReloadInstructions,
 } from 'react-native/Libraries/NewAppScreen';
 
-function MainPage (props) {
+function MainPage ({route, navigation}) {
+  
   return (
     <React.Fragment>
       <StatusBar 
@@ -34,13 +37,26 @@ function MainPage (props) {
         <ScrollView
         contentInsetAdjustmentBehavior="automatic"
         style={styles.scrollView}>
-          <Header />
-          {global.HermesInternal == null ? null : (
-            <View style={styles.engine}>
-              <Text style={styles.footer}>Engine: Hermes</Text>
-            </View>
-          )}
           <View style={styles.body}>
+            <View className="navButtons" style={{width:"100%", minHeight:250, padding:10, display:"flex", flexDirection:"column", justifyContent:"space-around"}}>
+              <Button title="MainPage" onPress={()=>{navigation.navigate("MainPage");}}/>
+              <Button 
+                title="SurveyPage" 
+                color="#266716" 
+                onPress={()=>{navigation.navigate(
+                  "SurveyPage"
+                );}}
+              />
+              <Button title="Force reload MainPage"  onPress={()=>{navigation.push("MainPage");}}/>
+              <Button 
+                title="Pass data then show" 
+                style={globalStyles.Button} 
+                onPress={()=>{navigation.navigate(
+                  "SurveyPage", 
+                  { stringData: "This is from MainPage.js" }
+                );}}
+              />
+            </View>
             <View style={styles.sectionContainer}>
               <Text style={styles.sectionTitle}>Step One</Text>
               <Text style={styles.sectionDescription}>
